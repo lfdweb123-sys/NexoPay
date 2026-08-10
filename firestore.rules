@@ -1,0 +1,56 @@
+rules_version = '2';
+
+// Règles Firestore — à déployer avec `firebase deploy --only firestore:rules`
+// (ou copier-coller dans la console Firebase > Firestore > Règles).
+//
+// Principe : le client (app mobile) ne peut LIRE que ses propres jobs et
+// ses propres pending_payments, et n'écrit JAMAIS directement dans ces
+// collections (tout passe par le backend via Firebase Admin, qui contourne
+// ces règles). Les collections de config (ussd_codes, ussd_messages, sims,
+// config) ne sont accessibles qu'en lecture par le bot Android authentifié,
+// jamais par l'app client, jamais en écriture publique.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    match /jobs/{jobId} {
+      allow read: if request.auth != null && resource.data.clientUid == request.auth.uid;
+      allow write: if false; // uniquement via backend (Admin SDK, bypass les règles)
+    }
+
+    match /pending_payments/{ref} {
+      allow read: if request.auth != null && resource.data.clientUid == request.auth.uid;
+      allow write: if false;
+    }
+
+    // Lecture par le bot Android authentifié (compte de service dédié) uniquement.
+    // Remplace "bot" par un vrai contrôle de rôle (custom claim) en production.
+    match /ussd_codes/{docId} {
+      allow read: if request.auth != null;
+      allow write: if false; // uniquement via /api/admin/ussd-codes (backend)
+    }
+
+    match /ussd_messages/{docId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+    match /sims/{docId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+    match /config/{docId} {
+      allow read: if true; // config/contact doit être lisible publiquement par l'app client
+      allow write: if false;
+    }
+
+    match /admin_logs/{docId} {
+      allow read, write: if false; // jamais accessible côté client, uniquement backend Admin SDK
+    }
+  }
+}

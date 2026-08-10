@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LFD MoMo Bot"
+            android:textColor="#111111"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="20dp"
+            android:text="Configuration du bot exécuteur USSD"
+            android:textColor="#6B6B6B" />
+
+        <Button
+            android:id="@+id/btnGrantPermissions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#F5821F"
+            android:text="1. Accorder les permissions" />
+
+        <Button
+            android:id="@+id/btnOpenAccessibility"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#F5821F"
+            android:text="2. Activer le service d'accessibilité" />
+
+        <Button
+            android:id="@+id/btnListSims"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#111111"
+            android:text="3. Lister les SIM détectées" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4. Association SIM ↔ opérateur (slot 0, 1 ou 2)"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/inputMtnSlot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Slot SIM pour MTN (ex: 0)"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/inputMoovSlot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Slot SIM pour Moov (ex: 1)"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/inputCeltiisSlot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Slot SIM pour Celtiis (ex: 2)"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5. Codes secrets marchands (stockés chiffrés)"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/inputMtnCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Code marchand MTN"
+            android:inputType="numberPassword" />
+
+        <EditText
+            android:id="@+id/inputMoovCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Code marchand Moov"
+            android:inputType="numberPassword" />
+
+        <EditText
+            android:id="@+id/inputCeltiisCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Code marchand Celtiis"
+            android:inputType="numberPassword" />
+
+        <Button
+            android:id="@+id/btnSaveConfig"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#F5821F"
+            android:text="Enregistrer la configuration" />
+
+        <Button
+            android:id="@+id/btnStartService"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#111111"
+            android:text="Démarrer le bot" />
+
+    </LinearLayout>
+</ScrollView>

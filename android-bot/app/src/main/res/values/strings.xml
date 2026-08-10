@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LFD MoMo Bot</string>
+    <string name="accessibility_service_description">Permet à LFD MoMo Bot de lire et répondre automatiquement aux menus USSD pour exécuter les opérations marchand (dépôt, forfait, transfert).</string>
+</resources>

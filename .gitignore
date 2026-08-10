@@ -1,0 +1,22 @@
+# Android
+android-bot/.gradle/
+android-bot/app/build/
+android-bot/build/
+android-bot/local.properties
+android-bot/app/google-services.json
+
+# Node / Next.js
+backend/node_modules/
+backend/.next/
+backend/.env.local
+
+# Flutter
+mobile-app/.dart_tool/
+mobile-app/build/
+mobile-app/.flutter-plugin-dependencies
+mobile-app/lib/firebase_options.dart
+
+# Divers
+*.log
+.DS_Store
+commande.txt

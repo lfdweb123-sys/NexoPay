@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.LfdMomoBot" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#F5821F</item>
+        <item name="colorPrimaryDark">#D96C0F</item>
+        <item name="colorAccent">#F5821F</item>
+        <item name="android:windowBackground">#FFFFFF</item>
+    </style>
+</resources>
