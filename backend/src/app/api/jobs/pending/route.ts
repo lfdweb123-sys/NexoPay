@@ -11,16 +11,23 @@ export const dynamic = "force-dynamic";
  */
 export async function GET(req: NextRequest) {
   if (!verifyInternalApiKey(req)) {
+    console.warn("[jobs/pending][GET] Clé interne invalide ou manquante");
     return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
 
-  const snap = await db
-    .collection("jobs")
-    .where("statut", "==", "pending")
-    .orderBy("createdAt", "asc")
-    .limit(10)
-    .get();
+  try {
+    const snap = await db
+      .collection("jobs")
+      .where("statut", "==", "pending")
+      .orderBy("createdAt", "asc")
+      .limit(10)
+      .get();
 
-  const jobs = snap.docs.map((d) => d.data());
-  return NextResponse.json({ jobs });
+    console.log("[jobs/pending][GET]", snap.size, "job(s) en attente");
+    const jobs = snap.docs.map((d) => d.data());
+    return NextResponse.json({ jobs });
+  } catch (err) {
+    console.error("[jobs/pending][GET] Erreur", err);
+    return NextResponse.json({ error: "Erreur serveur (vérifie l'index Firestore statut+createdAt)" }, { status: 500 });
+  }
 }

@@ -14,26 +14,38 @@ const DEFAULT_CONFIG: AppConfig = {
 };
 
 export async function GET(req: NextRequest) {
-  const { response } = await requireAdmin(req);
-  if (response) return response;
+  try {
+    const { response } = await requireAdmin(req);
+    if (response) return response;
 
-  const doc = await db.collection("config").doc("app").get();
-  if (!doc.exists) {
-    await db.collection("config").doc("app").set(DEFAULT_CONFIG);
-    return NextResponse.json({ config: DEFAULT_CONFIG });
+    const doc = await db.collection("config").doc("app").get();
+    if (!doc.exists) {
+      await db.collection("config").doc("app").set(DEFAULT_CONFIG);
+      console.log("[admin/config][GET] Config par défaut créée");
+      return NextResponse.json({ config: DEFAULT_CONFIG });
+    }
+    return NextResponse.json({ config: doc.data() });
+  } catch (err) {
+    console.error("[admin/config][GET] Erreur", err);
+    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
   }
-  return NextResponse.json({ config: doc.data() });
 }
 
 export async function PUT(req: NextRequest) {
-  const { response, admin } = await requireAdmin(req);
-  if (response) return response;
+  try {
+    const { response, admin } = await requireAdmin(req);
+    if (response) return response;
 
-  const body = await req.json();
-  await db
-    .collection("config")
-    .doc("app")
-    .set({ ...body, updatedAt: Date.now(), updatedBy: admin?.email }, { merge: true });
+    const body = await req.json();
+    await db
+      .collection("config")
+      .doc("app")
+      .set({ ...body, updatedAt: Date.now(), updatedBy: admin?.email }, { merge: true });
 
-  return NextResponse.json({ ok: true });
+    console.log("[admin/config][PUT] Mis à jour par", admin?.email);
+    return NextResponse.json({ ok: true });
+  } catch (err) {
+    console.error("[admin/config][PUT] Erreur", err);
+    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
+  }
 }

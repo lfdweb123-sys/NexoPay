@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "LFD MoMo — Administration",
+  title: "NexoPay — Administration",
   description: "Plateforme d'automatisation Mobile Money marchand",
 };
 

@@ -24,7 +24,7 @@ export default function AdminNav() {
     <header className="border-b border-gray-200 bg-white sticky top-0 z-10">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className="font-bold text-brandBlack text-lg">
-          LFD <span className="text-brandOrange">MoMo</span>
+          Nexo<span className="text-brandOrange">Pay</span>
         </div>
         <nav className="flex gap-1">
           {LINKS.map((link) => (

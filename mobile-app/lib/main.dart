@@ -12,16 +12,16 @@ void main() async {
     // Généré automatiquement par `flutterfire configure` — voir README.
     // options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const LfdMomoApp());
+  runApp(const NexoPayApp());
 }
 
-class LfdMomoApp extends StatelessWidget {
-  const LfdMomoApp({super.key});
+class NexoPayApp extends StatelessWidget {
+  const NexoPayApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'LFD MoMo',
+      title: 'NexoPay',
       debugShowCheckedModeBanner: false,
       theme: buildAppTheme(),
       home: const AuthGate(),

@@ -39,7 +39,7 @@ export default function AdminLoginPage() {
         className="w-full max-w-sm bg-white border border-gray-200 rounded-2xl shadow-sm p-8 space-y-5"
       >
         <div className="text-center space-y-1">
-          <h1 className="text-xl font-bold text-brandBlack">Administration LFD MoMo</h1>
+          <h1 className="text-xl font-bold text-brandBlack">Administration NexoPay</h1>
           <p className="text-sm text-brandGray">Connectez-vous pour continuer</p>
         </div>
 

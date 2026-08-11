@@ -1,5 +1,5 @@
-name: lfd_momo_app
-description: Application LFD MoMo — forfaits et transferts d'argent via SIM marchandes.
+name: nexopay_app
+description: NexoPay — forfaits et transferts d'argent via SIM marchandes.
 publish_to: "none"
 version: 1.0.0+1
 
@@ -25,6 +25,17 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.14.1
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+  adaptive_icon_background: "#F5821F"
+  adaptive_icon_foreground: "assets/icon/icon_foreground.png"
+  remove_alpha_ios: true
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/icon/

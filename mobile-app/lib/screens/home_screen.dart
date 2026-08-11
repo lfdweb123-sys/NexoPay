@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('LFD MoMo'),
+        title: const Text('NexoPay'),
         actions: [
           IconButton(
             icon: const Icon(Icons.history),
